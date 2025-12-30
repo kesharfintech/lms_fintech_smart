@@ -1,0 +1,10 @@
+model Menu {
+  id        Int      @id @default(autoincrement())
+  menuName  String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])  
+  createdAt DateTime @default(now())
+  createdBy String
+  updateBy  String?
+  updateAt  DateTime?
+}
