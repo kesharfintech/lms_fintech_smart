@@ -1,1 +1,0 @@
-# lms_fintech_smart
