@@ -45,3 +45,19 @@ exports.login = async ({ email, password }) => {
 
   return { token };
 };
+
+
+exports.getAllUsers = async () => {
+  return prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      createdAt: true
+    },
+    orderBy: {
+      id: "desc"
+    }
+  });
+};
+

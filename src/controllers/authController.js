@@ -70,3 +70,24 @@ exports.login = async (req, res) => {
   }
 };
 
+/**
+ * @swagger
+ * /api/auth/users:
+ *   get:
+ *     summary: Get all users
+ *     tags: [Auth]
+ *     responses:
+ *       200:
+ *         description: Users fetched successfully
+ */
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await authModel.getAllUsers();
+    res.status(200).json(users); // only data
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
