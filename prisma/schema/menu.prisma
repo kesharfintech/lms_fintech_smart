@@ -1,0 +1,12 @@
+model Menu {
+  id        Int      @id @default(autoincrement())
+  menuName  String   @unique
+
+  userId    Int?
+
+  createdBy String    // sirf name store hoga
+  updateBy  String?
+  updateAt  DateTime?
+
+  createdAt DateTime @default(now())
+}
