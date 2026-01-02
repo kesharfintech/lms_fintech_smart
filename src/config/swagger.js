@@ -1,4 +1,3 @@
-// config/swagger.js
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
@@ -9,13 +8,8 @@ const options = {
       title: "AD_TRS Auth API",
       version: "1.0.0",
     },
-    servers: [
-      {
-        url: "http://localhost:5000",
-      },
-    ],
+    servers: [{ url: "http://localhost:5000" }],
 
-    // 🔐 ADD THIS PART (MOST IMPORTANT)
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -26,12 +20,7 @@ const options = {
       },
     },
 
-    // 🔐 Global security
-    security: [
-      {
-        bearerAuth: [],
-      },
-    ],
+    security: [{ bearerAuth: [] }],
   },
 
   apis: ["./src/routes/*.js", "./src/controllers/*.js"],
