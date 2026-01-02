@@ -20,15 +20,22 @@ console.log("PRISMA.USER:", prisma.user);
   });
 };
 
+
 exports.login = async ({ email, password }) => {
+  const emailLower = email.trim().toLowerCase();
+  const passwordTrim = password.trim();
   const user = await prisma.user.findUnique({
-    where: { email }
+    where: { email: emailLower }
   });
 
-  if (!user) throw new Error("Invalid credentials");
+  if (!user) {
+    throw new Error("Invalid credentials");
+  }
 
-  const match = await bcrypt.compare(password, user.password);
-  if (!match) throw new Error("Invalid credentials");
+  const match = await bcrypt.compare(passwordTrim, user.password);
+  if (!match) {
+    throw new Error("Invalid credentials");
+  }
 
   const token = jwt.sign(
     { id: user.id, email: user.email },
