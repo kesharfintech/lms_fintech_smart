@@ -61,7 +61,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const result = await authModel.login(req.body);
-    res.json({
+    res.status(200).json({
       message: "Login successful",
       token: result.token
     });
@@ -69,3 +69,4 @@ exports.login = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
