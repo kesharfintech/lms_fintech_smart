@@ -23,3 +23,19 @@ exports.menu = async ({ menuName, userId }) => {
   });
 };
 
+exports.getAllMenus = async () => {
+  return prisma.menu.findMany({
+    select: {
+      id: true,
+      menuName: true,
+      userId: true,
+      createdBy: true,
+      createdAt: true
+    },
+    orderBy: {
+      id: "desc"
+    }
+  });
+};
+
+

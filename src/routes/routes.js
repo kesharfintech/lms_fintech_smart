@@ -19,6 +19,8 @@ router.post("/login", authController.login);
 // 🔐 protected routes
 router.post("/menu", auth, menuController.menu);
 router.get("/users", auth, authController.getAllUsers);
+router.get("/menus", auth, menuController.getAllMenus);
+
 
 module.exports = router;
 

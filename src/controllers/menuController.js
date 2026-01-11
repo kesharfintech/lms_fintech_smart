@@ -51,3 +51,24 @@ exports.menu = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+/**
+ * @swagger
+ * /api/auth/menus:
+ *   get:
+ *     summary: Get all menus
+ *     tags: [Menu]
+ *     responses:
+ *       200:
+ *         description: Menus fetched successfully
+ */
+
+exports.getAllMenus = async (req, res) => {
+  try {
+    const menus = await menuModel.getAllMenus();
+    res.status(200).json(menus); // only data
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+};
